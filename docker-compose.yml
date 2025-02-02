@@ -3,7 +3,7 @@ services:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: base
+      MYSQL_DATABASE: base  # base를 새로운 프로젝트 db 이름으로 수정
     ports:
       - "3306:3306"
     volumes:
