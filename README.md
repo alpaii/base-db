@@ -11,6 +11,11 @@ Modify the following SQL script by replacing `base` with your new project name.
 CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'userpassword';
 GRANT ALL PRIVILEGES ON base.* TO 'user'@'%';
 FLUSH PRIVILEGES;
+
+-- test_base for pytest
+CREATE DATABASE IF NOT EXISTS test_base CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+GRANT ALL PRIVILEGES ON test_base.* TO 'user'@'%';
+FLUSH PRIVILEGES;
 ```
 
 ## 2. Modifying Docker Compose Configuration
@@ -24,6 +29,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: base
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci  # ✅ charset 설정 추가
     ports:
       - "3306:3306"
     volumes:
