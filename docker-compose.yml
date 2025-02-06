@@ -4,6 +4,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: base  # Replace base with your new project db name.
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci  # ✅ charset 설정 추가
     ports:
       - "3306:3306"
     volumes:
